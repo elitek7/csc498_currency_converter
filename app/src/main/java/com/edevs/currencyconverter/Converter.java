@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,6 +19,8 @@ public class Converter extends AppCompatActivity implements AdapterView.OnItemSe
 {
     Spinner spinner;
     TextView amount, result;
+    String option;
+    Button convert_btn;
 
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -32,21 +35,24 @@ public class Converter extends AppCompatActivity implements AdapterView.OnItemSe
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
+        //Initializing the variables by assigning them to UI components
+        convert_btn = findViewById(R.id.convert_btn);
         amount = findViewById(R.id.amount);
         result = findViewById(R.id.result);
-
-
     }
 
     public void convert(View view)
     {
         //local variables:
         double value; //final result
-        final int rate= 40000; //exchange rate
+        final int rate = 40000; //exchange rate
         //Retrieving the selected option
         String option = spinner.getSelectedItem().toString();
         //Applying a conversion protocol in respect to every option
-        if(option.equals("USD to LBP"))
+        if(amount.getText().toString().isEmpty())
+        {
+            Toast.makeText(getApplicationContext(), "Empty field", Toast.LENGTH_LONG).show();
+        } else if(option.equals("USD to LBP"))
         {
             value = Double.parseDouble(amount.getText().toString())*rate;
             DecimalFormat df = new DecimalFormat("#");
@@ -57,19 +63,14 @@ public class Converter extends AppCompatActivity implements AdapterView.OnItemSe
             value = Double.parseDouble(amount.getText().toString())/rate;
             DecimalFormat df = new DecimalFormat("#");
             df.setMaximumFractionDigits(2);
-            result.setText(df.format(value) + " LBP");
+            result.setText(df.format(value) + " USD");
         }
-
-
-        Toast.makeText(this, "converting", Toast.LENGTH_LONG).show();
-
     }
-
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l)
     {
-
+        option = adapterView.getItemAtPosition(i).toString();
     }
 
     @Override
