@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
 
         String username_input = username.getText().toString();
         String password_input = password.getText().toString();
-        Toast.makeText(getApplicationContext(), "Hello", Toast.LENGTH_LONG).show();
 
         if(username_input.equals("user.leb") && password_input.equals("123456"))
         {

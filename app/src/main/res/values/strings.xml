@@ -2,4 +2,8 @@
     <string name="app_name">CurrencyConverter</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
+    <string-array name="options">
+        <item>USD to LBP</item>
+        <item>LBP to USD</item>
+    </string-array>
 </resources>
