@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
+    //Setting the lock icon to change to theme color when focused on
     <item android:state_focused="true"
         android:drawable="@drawable/ic_lock_focused">
     </item>

@@ -29,6 +29,7 @@ public class Converter extends AppCompatActivity implements AdapterView.OnItemSe
         Intent i = getIntent();
         String username = i.getStringExtra("username");
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.teal_200)));
+        //Initializing the spinner and the adapter
         spinner = findViewById(R.id.spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.options, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

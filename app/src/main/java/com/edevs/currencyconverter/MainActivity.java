@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //Changing the action bar color to theme color
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.teal_200)));
 
     }
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         if(username_input.equals("user.leb") && password_input.equals("123456"))
         {
             Toast.makeText(this, "Logged in", Toast.LENGTH_SHORT).show();
+            //Initializing an intent to access the converter page
             Intent i = new Intent(getApplicationContext(), Converter.class);
             i.putExtra("username", username_input);
             startActivity(i);
