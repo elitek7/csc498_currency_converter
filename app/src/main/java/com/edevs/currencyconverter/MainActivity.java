@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(username_input.equals("user.leb") && password_input.equals("123456"))
         {
-            Toast.makeText(this, "Logged in", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Logged in", Toast.LENGTH_SHORT).show();
             Intent i = new Intent(getApplicationContext(), Converter.class);
             i.putExtra("username", username_input);
             startActivity(i);

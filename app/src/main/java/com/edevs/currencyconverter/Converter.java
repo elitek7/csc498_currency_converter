@@ -28,7 +28,6 @@ public class Converter extends AppCompatActivity implements AdapterView.OnItemSe
         setContentView(R.layout.activity_converter);
         Intent i = getIntent();
         String username = i.getStringExtra("username");
-        Toast.makeText(this, username, Toast.LENGTH_LONG).show();
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.teal_200)));
         spinner = findViewById(R.id.spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.options, android.R.layout.simple_spinner_item);
@@ -55,15 +54,17 @@ public class Converter extends AppCompatActivity implements AdapterView.OnItemSe
         } else if(option.equals("USD to LBP"))
         {
             value = Double.parseDouble(amount.getText().toString())*rate;
-            DecimalFormat df = new DecimalFormat("#");
+            DecimalFormat df = new DecimalFormat("###,###,###");
             df.setMaximumFractionDigits(2);
             result.setText(df.format(value) + " LBP");
+            Toast.makeText(this, "Converted", Toast.LENGTH_SHORT).show();
         } else if(option.equals("LBP to USD"))
         {
             value = Double.parseDouble(amount.getText().toString())/rate;
             DecimalFormat df = new DecimalFormat("#");
             df.setMaximumFractionDigits(2);
             result.setText(df.format(value) + " USD");
+            Toast.makeText(this, "Converted", Toast.LENGTH_SHORT).show();
         }
     }
 
