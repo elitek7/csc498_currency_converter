@@ -2,6 +2,7 @@
     <string name="app_name">CurrencyConverter</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
+    //Creating the drop menu array
     <string-array name="options">
         <item>USD to LBP</item>
         <item>LBP to USD</item>

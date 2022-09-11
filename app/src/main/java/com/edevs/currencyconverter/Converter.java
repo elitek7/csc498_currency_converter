@@ -47,24 +47,32 @@ public class Converter extends AppCompatActivity implements AdapterView.OnItemSe
         final int rate = 40000; //exchange rate
         //Retrieving the selected option
         String option = spinner.getSelectedItem().toString();
-        //Applying a conversion protocol in respect to every option
+
         if(amount.getText().toString().isEmpty())
-        {
+        {   //Empty field alert
             Toast.makeText(getApplicationContext(), "Empty field", Toast.LENGTH_LONG).show();
-        } else if(option.equals("USD to LBP"))
+        }
+        else if(Double.parseDouble(amount.getText().toString())>=0) //Amount has to be greater than or equal to 0
+        {   //Applying a conversion protocol in respect to every option
+            if(option.equals("USD to LBP"))
+            {
+                value = Double.parseDouble(amount.getText().toString())*rate;
+                DecimalFormat df = new DecimalFormat("###,###,###");
+                df.setMaximumFractionDigits(3);
+                result.setText(df.format(value) + " LBP");
+                Toast.makeText(this, "Converted", Toast.LENGTH_SHORT).show();
+            } else if(option.equals("LBP to USD"))
+            {
+                value = Double.parseDouble(amount.getText().toString())/rate;
+                DecimalFormat df = new DecimalFormat("#");
+                df.setMaximumFractionDigits(3);
+                result.setText(df.format(value) + " USD");
+                Toast.makeText(this, "Converted", Toast.LENGTH_SHORT).show();
+            }
+        }
+        else
         {
-            value = Double.parseDouble(amount.getText().toString())*rate;
-            DecimalFormat df = new DecimalFormat("###,###,###");
-            df.setMaximumFractionDigits(2);
-            result.setText(df.format(value) + " LBP");
-            Toast.makeText(this, "Converted", Toast.LENGTH_SHORT).show();
-        } else if(option.equals("LBP to USD"))
-        {
-            value = Double.parseDouble(amount.getText().toString())/rate;
-            DecimalFormat df = new DecimalFormat("#");
-            df.setMaximumFractionDigits(2);
-            result.setText(df.format(value) + " USD");
-            Toast.makeText(this, "Converted", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please enter a value greater than 0", Toast.LENGTH_SHORT).show();
         }
     }
 
