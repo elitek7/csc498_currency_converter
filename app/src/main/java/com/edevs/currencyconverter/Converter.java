@@ -45,13 +45,21 @@ public class Converter extends AppCompatActivity implements AdapterView.OnItemSe
         final int rate= 40000; //exchange rate
         //Retrieving the selected option
         String option = spinner.getSelectedItem().toString();
+        //Applying a conversion protocol in respect to every option
         if(option.equals("USD to LBP"))
         {
             value = Double.parseDouble(amount.getText().toString())*rate;
             DecimalFormat df = new DecimalFormat("#");
             df.setMaximumFractionDigits(2);
             result.setText(df.format(value) + " LBP");
+        } else if(option.equals("LBP to USD"))
+        {
+            value = Double.parseDouble(amount.getText().toString())/rate;
+            DecimalFormat df = new DecimalFormat("#");
+            df.setMaximumFractionDigits(2);
+            result.setText(df.format(value) + " LBP");
         }
+
 
         Toast.makeText(this, "converting", Toast.LENGTH_LONG).show();
 
