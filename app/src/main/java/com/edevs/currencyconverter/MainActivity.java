@@ -9,10 +9,12 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+{
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //Changing the action bar color to theme color
@@ -35,6 +37,14 @@ public class MainActivity extends AppCompatActivity {
             Intent i = new Intent(getApplicationContext(), Converter.class);
             i.putExtra("username", username_input);
             startActivity(i);
+        }
+        else if (!username_input.equals("user.leb") && password_input.equals("123456"))
+        {
+            Toast.makeText(this, "Wrong username", Toast.LENGTH_LONG).show();
+        }
+        else if (username_input.equals("user.leb") && !password_input.equals("123456"))
+        {
+            Toast.makeText(this, "Wrong password", Toast.LENGTH_LONG).show();
         }
         else
         {
